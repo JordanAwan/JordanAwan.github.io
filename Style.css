@@ -1,4 +1,28 @@
- 
+
+
+* {
+  box-sizing: border-box;
+}
+
+.box1 {
+  float: left;
+  width: 66.66%;
+  padding: 50px;
+}
+
+.box2 {
+    float: left;
+    width: 33.33%;
+    padding:50px;
+}
+
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 body {
   background-color: linen;
 }
@@ -7,6 +31,17 @@ h1 {
     text-align: center;
   color: navy;
   margin-left: 20px;
-  
-  
 }
+
+article {
+  width: 100%;
+  border: 2px solid green;
+  padding: 50px;
+  margin: 20px;
+  background: white;
+}
+
+img {
+  float: right;
+}
+
