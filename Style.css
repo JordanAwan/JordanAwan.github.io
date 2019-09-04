@@ -42,6 +42,14 @@ article {
 }
 
 img {
-  float: right;
+    float: right;
+    padding: 15px;
+    
 }
+
+ul {
+line-height: 30px;
+
+}
+
 
