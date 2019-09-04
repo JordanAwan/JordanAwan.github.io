@@ -6,15 +6,21 @@
 
 .box1 {
   float: left;
-  width: 66.66%;
+  width: 66%;
   padding: 50px;
 }
 
 .box2 {
     float: left;
-    width: 33.33%;
-    padding:50px;
+    width: 33%;
+    padding:20px;
 }
+
+.contact {
+    text-align: center;
+    width:100%;
+}
+
 
 
 .clearfix::after {
@@ -30,7 +36,9 @@ body {
 h1 {
     text-align: center;
   color: navy;
-  margin-left: 20px;
+ % margin-left: 20px;
+ font-size: 250%;%xx-large;
+
 }
 
 article {
