@@ -30,14 +30,14 @@
 }
 
 body {
-  background-color: linen;
+  background-color: rgb(245,250,255);
 }
 
 h1 {
     text-align: center;
-  color: navy;
+ % color: navy;
  % margin-left: 20px;
- font-size: 250%;%xx-large;
+ font-size: 300%;%xx-large;
 
 }
 
