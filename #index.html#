@@ -9,9 +9,9 @@
     <h1>Jordan Awan</h1>
 
     <div class="contact">
-      [last-name]@psu.edu<br>
+      [last-name]@psu.edu
 
-    <a href="/resume2019.pdf" download="JordanAwan"> Current CV</a>
+      <a href="/resume2019.pdf" download="JordanAwan"> Current CV</a>
       </div>
 
     <div class="box1">
@@ -56,15 +56,13 @@
 
 	</ul>
 	</article>
-
-
-      <!--
+	  
 	  <h3> Links </h3>
 	  <article>
 	    <a href="/resume2019.pdf" download="JordanAwan"> Current CV</a>
 	  </article>
 
-	  -->
+	  
     </div>
     <div class="box2">
       <img src="Jordan.jpg" alt="JordanPhoto" style="width:100%;max-width:400px">
