@@ -6,13 +6,13 @@
 
 .box1 {
   float: left;
-  width: 66%;
+  width: 75%;
   padding: 50px;
 }
 
 .box2 {
     float: left;
-    width: 33%;
+    width: 25%;
     padding:20px;
 }
 
