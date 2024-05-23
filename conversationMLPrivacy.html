@@ -1,0 +1,71 @@
+<h1 class="theconversation-article-title">Here’s how machine learning can violate your privacy</h1>
+
+<div class="theconversation-article-body">
+    <figure>
+      <img src="https://images.theconversation.com/files/595598/original/file-20240521-19-zmbvxw.jpg?ixlib=rb-4.1.0&rect=0%2C0%2C9000%2C5063&q=45&auto=format&w=754&fit=clip" />
+        <figcaption>
+          If your data was used to train an AI, it might – or might not – be safe from prying eyes.
+          <span class="attribution"><a class="source" href="https://www.gettyimages.com/detail/photo/big-brother-electronic-eye-concept-technologies-for-royalty-free-image/846874272">ValeryBrozhinsky/iStock via Getty Images</a></span>
+        </figcaption>
+    </figure>
+
+  <span><a href="https://theconversation.com/profiles/jordan-awan-1521291">Jordan Awan</a>, <em><a href="https://theconversation.com/institutions/purdue-university-1827">Purdue University</a></em></span>
+
+  <p>Machine learning has pushed the boundaries in several fields, including <a href="https://doi.org/10.1111/cts.12884">personalized medicine</a>, <a href="https://doi.org/10.1109/JSEN.2023.3262134">self-driving cars</a> and <a href="https://doi.org/10.1007/s41133-020-00038-8">customized advertisements</a>. Research has shown, however, that these systems memorize aspects of the data they were trained with in order to learn patterns, which raises concerns for privacy.</p>
+
+<p>In statistics and machine learning, the goal is to learn from past data to make new predictions or inferences about future data. In order to achieve this goal, the statistician or machine learning expert selects a <a href="https://www.coursera.org/articles/statistical-modeling">model to capture the suspected patterns</a> in the data. A model applies a simplifying structure to the data, which makes it possible to learn patterns and make predictions.  </p>
+
+<p>Complex machine learning models have some inherent pros and cons. On the positive side, they can learn much more complex patterns and work with richer datasets for tasks such as <a href="https://www.baeldung.com/cs/neural-networks-image-recognition">image recognition</a> and <a href="https://www.jax.org/personalized-medicine/precision-medicine-and-you/what-is-precision-medicine#">predicting how a specific person will respond to a treatment</a>.</p>
+
+<p>However, they also have the risk of <a href="https://www.ibm.com/topics/overfitting">overfitting</a> to the data. This means that they make accurate predictions about the data they were trained with but start to learn additional aspects of the data that are not directly related to the task at hand. This leads to models that aren’t generalized, meaning they perform poorly on new data that is the same type but not exactly the same as the training data. </p>
+
+<p>While there are techniques to address the predictive error associated with overfitting, there are also privacy concerns from being able to learn so much from the data.</p>
+
+<h2>How machine learning algorithms make inferences</h2>
+
+<p>Each model has a certain number of <a href="https://machinelearningmastery.com/difference-between-a-parameter-and-a-hyperparameter/">parameters</a>. A parameter is an element of a model that can be changed. Each parameter has a value, or setting, that the model derives from the training data. Parameters can be thought of as the different knobs that can be turned to affect the performance of the algorithm. While a straight-line pattern has only two knobs, the <a href="https://math.libretexts.org/Bookshelves/Algebra/Beginning_Algebra/03%3A_Graphing_Lines/3.04%3A_Graph_Using_the_y-Intercept_and_Slope">slope and intercept</a>, machine learning models have a great many <a href="https://medium.com/analytics-vidhya/what-are-model-parameters-in-deep-learning-and-how-to-calculate-it-de96476caab">parameters</a>. For example, the language model <a href="https://doi.org/10.48550/arXiv.2005.14165">GPT-3</a>, has 175 billion.</p>
+
+<p>In order to choose the parameters, machine learning methods use training data with the goal of minimizing the <a href="https://robots.net/fintech/what-is-an-objective-function-in-machine-learning/">predictive error</a> on the training data. For example, if the goal is to predict whether a person would respond well to a certain medical treatment based on their medical history, the machine learning model would make predictions about the data where the model’s developers know whether someone responded well or poorly. The model is rewarded for predictions that are correct and penalized for incorrect predictions, which leads the algorithm to adjust its parameters – that is, turn some of the “knobs” – and try again.</p>
+
+<figure>
+            <iframe width="440" height="260" src="https://www.youtube.com/embed/PeMlggyqz0Y?wmode=transparent&amp;start=0" frameborder="0" allowfullscreen=""></iframe>
+            <figcaption><span class="caption">The basics of machine learning explained.</span></figcaption>
+          </figure>
+
+<p>To avoid overfitting the training data, machine learning models are checked against a <a href="https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7">validation dataset</a> as well. The validation dataset is a separate dataset that is not used in the training process. By checking the machine learning model’s performance on this validation dataset, developers can ensure that the model is able to <a href="https://magnimindacademy.com/blog/what-is-generalization-in-machine-learning/">generalize</a> its learning beyond the training data, avoiding overfitting. </p>
+
+<p>While this process succeeds at ensuring good performance of the machine learning model, it does not directly prevent the machine learning model from memorizing information in the training data. </p>
+
+<h2>Privacy concerns</h2>
+
+<p>Because of the large number of parameters in machine learning models, there is a potential that the machine learning method <a href="https://doi.org/10.48550/arXiv.1706.05394">memorizes some data it was trained on</a>. In fact, this is a widespread phenomenon, and users can extract the memorized data from the machine learning model by using <a href="https://doi.org/10.48550/arXiv.1802.08232">queries tailored to get the data</a>. </p>
+
+<p>If the training data contains sensitive information, such as medical or genomic data, then the privacy of the people whose data was used to train the model could be compromised. Recent research showed that it is actually <a href="https://doi.org/10.1145/3406325.3451131">necessary for machine learning models to memorize</a> aspects of the training data in order to get optimal performance solving certain problems. This indicates that there may be a fundamental trade-off between the performance of a machine learning method and privacy.</p>
+
+<p>Machine learning models also make it possible to predict sensitive information using seemingly nonsensitive data. For example, Target was <a href="https://www.linkedin.com/pulse/machine-learning-retail-sales-target-predicting-pregnancy-rao">able to predict which customers were likely pregnant</a> by analyzing purchasing habits of customers who registered with the Target baby registry. Once the model was trained on this dataset, it was able to send pregnancy-related advertisements to customers it suspected were pregnant because they purchased items such as supplements or unscented lotions. </p>
+
+<h2>Is privacy protection even possible?</h2>
+
+<p>While there have been many proposed methods to reduce memorization in machine learning methods, most have been <a href="https://doi.org/10.48550/arXiv.1802.08232">largely ineffective</a>. Currently, the most promising solution to this problem is to ensure a mathematical limit on the privacy risk. </p>
+
+<p>The state-of-the-art method for formal privacy protection is <a href="http://eti.mit.edu/what-is-differential-privacy/">differential privacy</a>. Differential privacy requires that a machine learning model does not change much if one individual’s data is changed in the training dataset. Differential privacy methods achieve this guarantee by introducing additional randomness into the algorithm learning that “covers up” the contribution of any particular individual. Once a method is protected with differential privacy, no possible attack <a href="https://towardsdatascience.com/understanding-differential-privacy-85ce191e198a">can violate that privacy guarantee</a>.</p>
+
+<p>Even if a machine learning model is trained using differential privacy, however, that does not prevent it from making sensitive inferences such as in the Target example. To prevent these privacy violations, all data transmitted to the organization needs to be protected. This approach is called <a href="https://arxiv.org/pdf/1907.11908">local differential privacy</a>, and <a href="https://www.apple.com/privacy/docs/Differential_Privacy_Overview.pdf">Apple</a> and <a href="https://static.googleusercontent.com/media/research.google.com/de//pubs/archive/42852.pdf">Google</a> have implemented it.</p>
+
+<figure>
+            <iframe width="440" height="260" src="https://www.youtube.com/embed/gI0wk1CXlsQ?wmode=transparent&amp;start=0" frameborder="0" allowfullscreen=""></iframe>
+            <figcaption><span class="caption">Differential privacy is a method for protecting people’s privacy when their data is included in large datasets.</span></figcaption>
+          </figure>
+
+<p>Because differential privacy limits how much the machine learning model can depend on one individual’s data, this prevents memorization. Unfortunately, it also limits the performance of the machine learning methods. Because of this trade-off, there are critiques on the usefulness of differential privacy, since it often results in a significant <a href="https://doi.org/10.1145/3433638">drop in performance</a>.</p>
+
+<h2>Going forward</h2>
+
+<p>Due to the tension between inferential learning and privacy concerns, there is ultimately a societal question of which is more important in which contexts. When data does not contain sensitive information, it is easy to recommend using the most powerful machine learning methods available. </p>
+
+<p>When working with sensitive data, however, it is important to weigh the consequences of privacy leaks, and it may be necessary to sacrifice some machine learning performance in order to protect the privacy of the people whose data trained the model.<!-- Below is The Conversation's page counter tag. Please DO NOT REMOVE. --><img src="https://counter.theconversation.com/content/226299/count.gif?distributor=republish-lightbox-basic" alt="The Conversation" width="1" height="1" style="border: none !important; box-shadow: none !important; margin: 0 !important; max-height: 1px !important; max-width: 1px !important; min-height: 1px !important; min-width: 1px !important; opacity: 0 !important; outline: none !important; padding: 0 !important" referrerpolicy="no-referrer-when-downgrade" /><!-- End of code. If you don't see any code above, please get new code from the Advanced tab after you click the republish button. The page counter does not collect any personal data. More info: https://theconversation.com/republishing-guidelines --></p>
+
+  <p><span><a href="https://theconversation.com/profiles/jordan-awan-1521291">Jordan Awan</a>, Assistant Professor of Statistics, <em><a href="https://theconversation.com/institutions/purdue-university-1827">Purdue University</a></em></span></p>
+
+  <p>This article is republished from <a href="https://theconversation.com">The Conversation</a> under a Creative Commons license. Read the <a href="https://theconversation.com/heres-how-machine-learning-can-violate-your-privacy-226299">original article</a>.</p>
+</div>
