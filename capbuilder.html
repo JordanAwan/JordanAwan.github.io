@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+Author: Jordan A. Awan
+Project: CapBuilder
+FileName: capbuilder.html
+Purpose (of project): to provide the user a way to construct caps in AG(n,3) for n=2,...,7
+	-the program determines which points cannot be added to the cap
+	-the program determines the order of each point that cannot be added to the cap
+		(the number of lines in the set if the point were added to the cap)
+	-the program determines the order signature of the cap
+		(the tally of each of the orders)
+	-the program determines the parallel signature
+		(if we make equivalence classes of the 2-lines in the cap calling two 2-lines 
+		equivalent if they are parallel, then the parallel signature tallies the sizes of 
+		these equivalence classes)
+of this file
+Purpose (of file): to build the user interface and provide a driver for the program.
+-->
+
+<!--History of the project:
+This project was developed during an REU at Lafayette College, summer 2013, under the advisement 
+of Liz McMahon. The other students on our team were Claire Frechette and Yumi Li, both of whom 
+were very helpful in the development of this program. The project was developed to aid in the 
+study of caps in AG(n,3) and was originally written in C# and only later translated into a 
+javascript web application. 
+-->
+<html>
+<head>
+<title>CapBuilder</title>
+
+<script src="capMethods.js"></script>
+<!-- <script src="formMethods.js"></script> -->
+
+</head>
+<body onload="clear_click()" >
+<!-- Open a file:
+<input type="file" id="file" name="file" enctype="multipart/form-data" />-->
+
+
+
+
+
+<!--<canvas width="1140" height="450" class="gray" id='canvas' ></canvas>-->
+<canvas width="1140" height="450" class="gray" id='canvas' ></canvas>
+
+<div id="parsig" style="font-size:80%;height:460px;width:56px;overflow:auto;background-color:#EEEEFF;float:right">
+<center>PSig</center><!--ParSig-->
+</div>
+<div id="signature" style="font-size:80%;height:460px;width:56px;overflow:auto;background-color:#EEFFEE;float:right">
+<center>OSig</center><!--OrderSig-->
+</div>
+<div id="points" style="font-size:80%;height:460px;width:56px;overflow:auto;background-color:#FFEEEE;float:right">
+<center>Pts</center><!--Points-->
+</div>
+
+<FORM NAME="DEForm" ACTION="" METHOD="POST" >
+Dimension: 
+<input type="radio" name="dimension" id="dim2" onClick='clear_click()' value=2> 2
+<input type="radio" name="dimension" id="dim3" onClick='clear_click()' value=3 > 3
+<input type="radio" name="dimension" id="dim4" onClick='clear_click()' value=4 > 4
+<input type="radio" name="dimension" id="dim5" onClick='clear_click()' value=5  checked> 5
+<input type="radio" name="dimension" id="dim6" onClick='clear_click()' value=6 > 6
+<input type="radio" name="dimension" id="dim7" onClick='clear_click()' value=7 > 7
+<br>
+ Elimination type: 
+<input type="radio" name="elimType" id="number" value="Number" onClick="radElim_click()" checked> Number
+<input type="radio" name="elimType" id="cross" value="Cross" onClick="radElim_click()"> Cross
+<input type="radio" name="elimType" id="none" value="None" onClick="radElim_click()"> None
+</FORM>
+
+<div id="complete" style="height:40px;width:162px;;background-color:#FFFFFF;float:right">
+
+</div>
+
+<!-- <div id="complete" style="height:20px;width:162px;;background-color:#FFFFFF;float:right">
+
+</div> -->
+
+<script type="text/javascript">
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d"); 
+var PANWID=1140;//1151
+var PANHEI=450;//460
+var DIM=0;
+var NUMPOINTS;// = Math.pow(3,DIM);
+var MAXORDER;
+var width;//=Math.pow(3,Math.floor(DIM/2)+DIM%2);//measured in entries
+var height;//=Math.pow(3,Math.floor(DIM/2));
+//var Narray;//=[1,200,144,120,48,40,16,14];
+var N;//=Narray[DIM];
+var X0;//=Math.floor((PANWID-N*width)/2)-1;
+var Y0;//=Math.floor((PANHEI-N*height)/2)-1;
+
+var countpts;
+
+var occBool=new Array();
+var elimBool=new Array();
+var occList=new Array();
+var numelim=new Array();
+var parsig=new Array();
+
+
+
+		canvas.addEventListener('click',function(evt){
+		var mousePos=getMousePos(evt);
+		var entry=selectedEntry(mousePos);
+		var num = pointToNum(entry.x,entry.y);
+		
+		if (num >= 0 && num < NUMPOINTS && !isTaken(num))
+		{
+		drawDot(entry.x,entry.y);
+		calcPointsElim(num,true);//draw is true
+		
+		occList.sort(function(a,b){return a-b});
+		
+		updateParSig(num,true);
+		
+		outputMeasures();
+		}
+		else if(num >= 0 && num < NUMPOINTS && occBool[num])
+		{
+		drawClear(entry.x,entry.y);
+        calcPointsUndo(num,true);
+		
+		updateParSig(num,false);
+		
+		outputMeasures();
+
+		}
+		},false);
+		
+
+
+		
+		
+</script>
+<br>
+<hr>
+<button title='initialize' onClick='clear_click()' style="width:160px;height:40px;float:right">Clear</button>
+<div id="numpoints" style="width:110px;float:left">
+Cap Size:
+</div>
+<!-- <button title='test' onClick='drawElim(0,0)'>test</button> -->
+<br>
+<button title='randomCap' onClick='randomCap()' style="width:150px;height=20px;float:left">Random Cap</button>
+
+</body>
+</html>
